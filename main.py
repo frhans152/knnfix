@@ -88,7 +88,12 @@ if option == "Detail Perhitungan":
         # menghitung error dan akurasi
         mae = mean_absolute_error(y_test , y_pred)
         acc = accuracy_score(y_test , y_pred)
+        prec = precision_score (y_test , y_pred, average='weighted')
+        rec = recall_score (y_test , y_pred, average='weighted')
+        f1 = f1_score (y_test , y_pred, average='weighted')
         st.write(f"MAE {mae} | Accuracy {acc}")
+        st.write(f"Precision {prec} | Recall {rec}")
+        st.write(f"F1 Score {f1}")
         dfx = df.drop('Unnamed: 0' ,axis=1)
         k_best = SelectKBest(chi2, k=len(dfx.columns))
         X_train_selected = k_best.fit_transform(X , y)
