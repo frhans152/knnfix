@@ -4,7 +4,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split , KFold
-from sklearn.metrics import mean_absolute_error , accuracy_score ,confusion_matrix , ConfusionMatrixDisplay 
+from sklearn.metrics import mean_absolute_error , accuracy_score ,confusion_matrix , ConfusionMatrixDisplay , precision_score , recall_score , f1_score
 from sklearn.preprocessing import LabelEncoder , MinMaxScaler
 import numpy as np
 import matplotlib.pyplot as plt
@@ -88,6 +88,12 @@ if option == "Detail Perhitungan":
         # menghitung error dan akurasi
         mae = mean_absolute_error(y_test , y_pred)
         acc = accuracy_score(y_test , y_pred)
+        st.header("RPF")
+        pack = {"Recal" : [recall_score(y_test , y_pred , average='weighted')] , 
+                "Precision" : [precision_score(y_test , y_pred , average='weighted')] , 
+                "F1" : [f1_score(y_test , y_pred , average='weighted')]}
+        data_p = pd.DataFrame(pack)
+        st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
         dfx = df.drop('Unnamed: 0' ,axis=1)
         k_best = SelectKBest(chi2, k=len(dfx.columns))
@@ -97,6 +103,13 @@ if option == "Detail Perhitungan":
         st.header("Feature importance")
         for feature, score in zip(feature_names, feature_scores):
             st.write(f"Feature: {feature}, Score: {score}")
+        feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_scores})
+        fig, ax = plt.subplots()
+        feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=True)
+        ax.barh(feature_importance_df['Feature'], feature_importance_df['Importance'])
+        ax.set_xlabel('Importance')
+        ax.set_title('Feature Importance')
+        st.pyplot(fig)
         st.header("K Fold")
         # Kfold
         kf = KFold(n_splits=5)
