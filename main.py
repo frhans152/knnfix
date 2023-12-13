@@ -95,7 +95,9 @@ if option == "Detail Perhitungan":
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
+        
         # Kfold
+        st.header("K Fold")
         kf = KFold(n_splits=5)
         scores = []
         for train_index, test_index in kf.split(X):
@@ -106,6 +108,7 @@ if option == "Detail Perhitungan":
             scores.append(score)
         rata_rata = np.sum(scores) / len(scores)
         st.write("Rata Rata Cross-Validation Score (K-fold):", rata_rata)
+        #conf matrix
         st.header("Confusion Matrix")
         cm = confusion_matrix(akt , lable_asli)
         cmd = ConfusionMatrixDisplay(confusion_matrix=cm , display_labels=['Normal' , 'Parah' , 'Ringan' , 'Sangat Parah' , 'Sedang'])
@@ -129,7 +132,7 @@ if option == "Detail Perhitungan":
         ax.set_xlabel('Importance')
         ax.set_title('Feature Importance')
         st.pyplot(fig)
-        st.header("K Fold")
+        
 
         
 if option == "Tes Tingkat Stres" : 
