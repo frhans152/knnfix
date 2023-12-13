@@ -95,22 +95,6 @@ if option == "Detail Perhitungan":
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
-        dfx = df.drop('Unnamed: 0' ,axis=1)
-        k_best = SelectKBest(chi2, k=len(dfx.columns))
-        X_train_selected = k_best.fit_transform(X , y)
-        feature_scores = k_best.scores_
-        feature_names = dfx.columns
-        st.header("Feature importance")
-        for feature, score in zip(feature_names, feature_scores):
-            st.write(f"Feature: {feature}, Score: {score}")
-        feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_scores})
-        fig, ax = plt.subplots()
-        feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=True)
-        ax.barh(feature_importance_df['Feature'], feature_importance_df['Importance'])
-        ax.set_xlabel('Importance')
-        ax.set_title('Feature Importance')
-        st.pyplot(fig)
-        st.header("K Fold")
         # Kfold
         kf = KFold(n_splits=5)
         scores = []
@@ -129,6 +113,24 @@ if option == "Detail Perhitungan":
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot()
         plt.show()
+        #feature importance
+        dfx = df.drop('Unnamed: 0' ,axis=1)
+        k_best = SelectKBest(chi2, k=len(dfx.columns))
+        X_train_selected = k_best.fit_transform(X , y)
+        feature_scores = k_best.scores_
+        feature_names = dfx.columns
+        st.header("Feature importance")
+        for feature, score in zip(feature_names, feature_scores):
+            st.write(f"Feature: {feature}, Score: {score}")
+        feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': feature_scores})
+        fig, ax = plt.subplots()
+        feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=True)
+        ax.barh(feature_importance_df['Feature'], feature_importance_df['Importance'])
+        ax.set_xlabel('Importance')
+        ax.set_title('Feature Importance')
+        st.pyplot(fig)
+        st.header("K Fold")
+
         
 if option == "Tes Tingkat Stres" : 
     st.title("KUESIONER TINGKAT STRES")
