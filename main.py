@@ -78,7 +78,7 @@ if option == "Detail Perhitungan":
         # kita rubah dari lable encoding ke lable asli
         lable_asli = laben.inverse_transform(y_pred)
         akt = laben.inverse_transform(y_test)
-        st.header("Hasil Prediksi")
+        st.header("Hasil Klasifikasi")
         d = {"Prediksi" : list(lable_asli) , "Data Aktual" : list(akt)}
         dfh = pd.DataFrame(d)
         st.dataframe(dfh)
