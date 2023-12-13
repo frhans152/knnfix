@@ -131,8 +131,8 @@ if option == "Detail Perhitungan":
         plt.show()
         
 if option == "Tes Tingkat Stres" : 
-    st.title("CEK TINGKAT STRESS KAMU")
-    st.header("Login dulu")
+    st.title("KUESIONER TINGKAT STRES")
+    st.header("Isi Data Terlebih Dahulu")
     datah = [] ; nama = [] ; prodi = [] ; nim = []
     inpt1 = st.text_input("Nama")
     inpt2 = st.text_input("Prodi")
@@ -162,7 +162,7 @@ if option == "Tes Tingkat Stres" :
     soal12 = st.radio(lable[11] , plh)
     soal13 = st.radio(lable[12] , plh)
     soal14 = st.radio(lable[13] , plh)
-    if st.button("Summit"):
+    if st.button("Submit"):
         tamps = []
         tamps.append([soal1 , soal2 , soal3 , soal4 , soal5 , soal6 , soal7 , soal8 , soal9 , soal10 , soal11 , soal12 , soal13 , soal14])
         for i in range(len(tamps[0])):
