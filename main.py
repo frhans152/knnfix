@@ -191,7 +191,7 @@ if option == "Tes Tingkat Stres" :
         elif hasils == "Parah":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
             pada prodi {inpt2} Tingkat stres anda {hasils} , 
-            Anda harus segera melakukan rehabilitasi / mendengarkan nasehat nasehat baik'''
+            Bertahanlah sekuat tenaga, sangat disarankan untuk mencari bantuan profesional, seperti psikolog atau psikiater. Terapi bicara dan obat-obatan bisa menjadi pilihan pengobatan (National Institute of Mental Health, 2018).''''
             st.write(p)
         elif hasils == "Sangat Parah":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
