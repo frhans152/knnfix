@@ -181,12 +181,12 @@ if option == "Tes Tingkat Stres" :
         elif hasils == "Ringan":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
             pada prodi {inpt2} Tingkat stres anda {hasils} , 
-            semoga lekas sembuh'''
+           Teknik relaksasi seperti meditasi atau yoga sering direkomendasikan. Ini didukung oleh penelitian yang menunjukkan bahwa meditasi mindfulness dapat membantu mengurangi stres(Goyal et al., 2014).'''
             st.write(p)
         elif hasils == "Sedang":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
             pada prodi {inpt2} Tingkat stres anda {hasils} , 
-            Anda harus segera beristirahat dan dekatkan diri ke pada tuhan'''
+            Berbicara dengan seorang teman dekat atau anggota keluarga, atau mencari dukungan dari seorang konselor dapat membantu. Terapi perilaku kognitif juga telah terbukti efektif dalam mengelola stres (Hofmann, Asnaani, Vonk, Sawyer, & Fang, 2012).'''
             st.write(p)
         elif hasils == "Parah":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
@@ -196,5 +196,5 @@ if option == "Tes Tingkat Stres" :
         elif hasils == "Sangat Parah":
             p = f'''Dari hasil analysis Program kami user bernama {inpt1} ,
             pada prodi {inpt2} Tingkat stres anda {hasils} , 
-            Anda harus segera melakukan rehabilitasi / mendengarkan nasehat nasehat baik atau pergi ke piskolog'''
+            Bertahanlah sekuat tenaga, sangat disarankan untuk mencari bantuan profesional, seperti psikolog atau psikiater. Terapi bicara dan obat-obatan bisa menjadi pilihan pengobatan (National Institute of Mental Health, 2018).'''
             st.write(p)
