@@ -86,8 +86,8 @@ if option == "Detail Perhitungan":
         lable_count = groub['Prediksi'].count()
         st.write(lable_count)
         # menghitung error dan akurasi
-        mae = mean_absolute_error(y_test , y_pred)
-        acc = accuracy_score(y_test , y_pred)
+        mae = mean_absolute_error(y_test , y_pred, average='weighted')
+        acc = accuracy_score(y_test , y_pred, average='weighted')
         st.header("RPF")
         pack = {"Recal" : [recall_score(y_test , y_pred , average='weighted')] , 
                 "Precision" : [precision_score(y_test , y_pred , average='weighted')] , 
