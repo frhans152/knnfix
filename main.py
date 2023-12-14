@@ -89,9 +89,9 @@ if option == "Detail Perhitungan":
         mae = mean_absolute_error(y_test , y_pred)
         acc = accuracy_score(y_test , y_pred)
         st.header("RPF")
-        pack = {"Recal" : [recall_score(y_test , y_pred , average='weighted')] , 
-                "Precision" : [precision_score(y_test , y_pred , average='weighted')] , 
-                "F1" : [f1_score(y_test , y_pred , average='weighted')]}
+        pack = {"Recal" : [recall_score(y_test , y_pred )] , 
+                "Precision" : [precision_score(y_test , y_pred)] , 
+                "F1" : [f1_score(y_test , y_pred)]}
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
