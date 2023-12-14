@@ -86,15 +86,16 @@ if option == "Detail Perhitungan":
         lable_count = groub['Prediksi'].count()
         st.write(lable_count)
         # menghitung error dan akurasi
+        mae = mean_absolute_error(y_test , y_pred)
+        acc = accuracy_score(y_test , y_pred)
         st.header("RPF")
-        pack = {"MAE" : [mean_absolute_error(y_test , y_pred, average='weighted')] , 
-                "Accuracy" : [accuracy_score(y_test , y_pred, average='weighted')] ,
-                "Recal" : [recall_score(y_test , y_pred, average='weighted')] , 
-                "Precision" : [precision_score(y_test , y_pred, average='weighted')] , 
-                "F1" : [f1_score(y_test , y_pred, average='weighted')]}
+        pack = {"Recal" : [recall_score(y_test , y_pred , average='weighted')] , 
+                "Precision" : [precision_score(y_test , y_pred , average='weighted')] , 
+                "F1" : [f1_score(y_test , y_pred , average='weighted')]}
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
-             
+        st.write(f"MAE {mae} | Accuracy {acc}")
+        
         # Kfold
         st.header("K Fold")
         kf = KFold(n_splits=5)
