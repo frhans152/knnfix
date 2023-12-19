@@ -9,6 +9,7 @@ from sklearn.preprocessing import LabelEncoder , MinMaxScaler
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import SelectKBest , chi2
+from sklearn.metrics import classification_report
 
 df = pd.read_csv('stress.csv')
 dfx = df.drop('Unnamed: 0' ,axis=1)
