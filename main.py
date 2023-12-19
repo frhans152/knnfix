@@ -95,6 +95,7 @@ if option == "Detail Perhitungan":
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
+        st.write(classification_report(y_test, y_pred))
         
         # Kfold
         st.header("K Fold")
