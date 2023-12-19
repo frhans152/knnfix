@@ -88,6 +88,7 @@ if option == "Detail Perhitungan":
         # menghitung error dan akurasi
         mae = mean_absolute_error(y_test , y_pred)
         acc = accuracy_score(y_test , y_pred)
+        report = classification_report(y_test, y_pred)
         st.header("RPF")
         pack = {"Recal" : [recall_score(y_test , y_pred , average='weighted')] , 
                 "Precision" : [precision_score(y_test , y_pred , average='weighted')] , 
@@ -95,7 +96,7 @@ if option == "Detail Perhitungan":
         data_p = pd.DataFrame(pack)
         st.dataframe(data_p)
         st.write(f"MAE {mae} | Accuracy {acc}")
-        st.write(classification_report(y_test, y_pred))
+        st.write(report)
         
         # Kfold
         st.header("K Fold")
