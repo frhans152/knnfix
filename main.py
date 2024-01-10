@@ -9,12 +9,15 @@ from sklearn.preprocessing import LabelEncoder , MinMaxScaler
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import SelectKBest , chi2
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import RFE
+from sklearn.feature_selection import RFECV
 from sklearn.metrics import classification_report
 
 df = pd.read_csv('stress.csv')
 dfx = df.drop('Unnamed: 0' ,axis=1)
 dfx = df.drop('Skor stress' , axis = 1)
-dfx = df.drop('Keterangan' , axis = 1)
+dfx = df.drop('Keterangan' , axis = 1)  
 norm = MinMaxScaler(feature_range=[0,len(df)-1])
 df_X = norm.fit_transform(dfx)
 print(df.head())
@@ -135,7 +138,17 @@ if option == "Detail Perhitungan":
         ax.set_xlabel('Importance')
         ax.set_title('Feature Importance')
         st.pyplot(fig)
-        
+        #rfe
+        rfecv= RFECV(estimator=model, step=1, cv=10, scoring='accuracy')
+        rfecv= rfecv.fit_transform(X, y)
+        st.write('Jumlah fitur optimal:{}'.format(rfecv.n_features_))
+
+
+
+
+
+
+
 
         
 if option == "Tes Tingkat Stres" : 
