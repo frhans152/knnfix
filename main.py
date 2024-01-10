@@ -138,17 +138,6 @@ if option == "Detail Perhitungan":
         ax.set_xlabel('Importance')
         ax.set_title('Feature Importance')
         st.pyplot(fig)
-         #rfe
-        rfecv= RFECV(estimator=model, step=1, cv=10, scoring='accuracy')
-        rfecv= rfecv.fit_transform(X, y)
-        rfecv_len=rfecv.n_features_
-        st.write('Jumlah fitur optimal:{}'.format(rfecv_len))
-
-
-
-
-
-
 
 
         
