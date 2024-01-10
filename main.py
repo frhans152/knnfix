@@ -9,9 +9,6 @@ from sklearn.preprocessing import LabelEncoder , MinMaxScaler
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import SelectKBest , chi2
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import RFE
-from sklearn.feature_selection import RFECV
 from sklearn.metrics import classification_report
 
 df = pd.read_csv('stress.csv')
@@ -138,6 +135,7 @@ if option == "Detail Perhitungan":
         ax.set_xlabel('Importance')
         ax.set_title('Feature Importance')
         st.pyplot(fig)
+
 
 
         
